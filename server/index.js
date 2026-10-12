@@ -1,10 +1,7 @@
-const express = require("express");
-const app = express();
+require("dotenv").config();
+const mongoose = require("mongoose");
 
-app.get("/", (req, res) => {
-  res.send("ResumeMatch server chal raha hai");
-});
-
-app.listen(5000, () => {
-  console.log("Server 5000 port par chal raha hai");
-});
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log("MongoDB connected"))
+  .catch((err) => console.log("MongoDB error:", err.message));
